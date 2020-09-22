@@ -10,7 +10,9 @@
 				<div class="row">
 					<div class="col-md-6 offset-md-3">
 						<a href="index.php">
-							<img src="images/logo.png" class="img-fluid">
+							<img src="{{ asset('frontend/images/logo.png') }}" class="img-fluid">
+							
+						
 						</a>
 					</div>
 				</div>

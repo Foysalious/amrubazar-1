@@ -52,7 +52,7 @@
 				</div>
 				<div class="row orderlist-row">
 					<div class="col-md-2">
-						<img src="images/product_4.jpg" class="img-fluid">
+						<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid">
 					</div>
 					<div class="col-md-2 orderlist-name">
 						<div class="orderlist-name-box">
@@ -82,7 +82,7 @@
 									<div class="col-md-6 offset-md-3 main-popup-box">
 										<i class="fas fa-times hide-popup"></i>
 										<div class="order-review-popup-box">
-											<img src="images/review.png" class="img-fluid review-img">
+											<img src="{{asset('Frontend/images/review.png')}}" class="img-fluid review-img">
 											<div class="row">
 
 												<!-- leftr part start -->
@@ -130,10 +130,10 @@
 												<!--  right part start -->
 												<div class="col-md-4">
 													<div class="popup-img">
-														<img src="images/logo.png" class="img-fluid">
+														<img src="{{asset('Frontend/images/logo.png')}}" class="img-fluid">
 													</div>
 													<div class="popup-img">
-														<img src="images/product_4.jpg" class="img-fluid">
+														<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid">
 													</div>
 												</div>
 												<!--  right part end -->

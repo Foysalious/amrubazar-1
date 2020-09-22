@@ -11,23 +11,23 @@
 			<!-- left part start -->
 			<div class="col-md-4">
 				<div class="product-main-img">
-					<img src="images/product_4.jpg" class="img-fluid to-img1 block__pic">
-					<img src="images/9-1-170x185.jpg" class="img-fluid to-img2 block__pic">
-					<img src="images/product_1.png" class="img-fluid to-img3 block__pic">
+					<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid to-img1 block__pic">
+					<img src="{{asset('Frontend/images/9-1-170x185.jpg')}}" class="img-fluid to-img2 block__pic">
+					<img src="{{asset('Frontend/images/product_1.png')}}" class="img-fluid to-img3 block__pic">
 				</div>
 
 				<!-- bottom image select start -->
 				<div class="row product-bottom-img-row">
 					<div class="col-md-4 col-4">
-						<img src="images/product_4.jpg" class="img-fluid for-img1">
+						<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid for-img1">
 						<i class="fas fa-caret-up caret-one"></i>
 					</div>
 					<div class="col-md-4 col-4">
-						<img src="images/9-1-170x185.jpg" class="img-fluid for-img2" >
+						<img src="{{asset('Frontend/images/9-1-170x185.jpg')}}" class="img-fluid for-img2" >
 						<i class="fas fa-caret-up caret-two"></i>
 					</div>
 					<div class="col-md-4 col-4">
-						<img src="images/product_1.png" class="img-fluid for-img3">
+						<img src="{{asset('Frontend/images/product_1.png')}}" class="img-fluid for-img3">
 						<i class="fas fa-caret-up caret-three"></i>
 					</div>
 				</div>
@@ -115,7 +115,7 @@
 									<a href="" class="cart">add to cart</a>
 								</li>
 								<li>
-									<a href=""><img src="images/wishlist.png"></a>
+									<a href=""><img src="{{asset('Frontend/images/wishlist.png')}}"></a>
 								</li>
 							</ul>
 							
@@ -224,7 +224,7 @@ your next hair trim belongs?</p>
 						<div class="product-hover-item">
 							<p>-15%</p>
 							<a href="">
-								<img src="images/wishlist.png" class="img-fluid">
+								<img src="{{asset('Frontend/images/wishlist.png')}}" class="img-fluid">
 							</a>
 							<a class="show-product-popup" id="profile_view_1">
 								<i class="fas fa-eye"></i>
@@ -232,7 +232,7 @@ your next hair trim belongs?</p>
 						</div>
 
 						<!-- main thumbnail -->
-						<img src="images/12-1-170x185.jpg" class="img-fluid">
+						<img src="{{asset('Frontend/images/12-1-170x185.jpg')}}" class="img-fluid">
 						<!-- main thumbnail -->
 
 						<!-- go product details -->
@@ -244,7 +244,7 @@ your next hair trim belongs?</p>
 						
 						<div class="product-item-cart">
 							<a href="">
-								<img src="images/cart-bag.png"> add to bag
+								<img src="{{asset('Frontend/images/cart-bag.png')}}"> add to bag
 							</a>
 						</div>
 						<ul>
@@ -264,7 +264,7 @@ your next hair trim belongs?</p>
 						<div class="product-hover-item">
 							<p>-15%</p>
 							<a href="">
-								<img src="images/wishlist.png" class="img-fluid">
+								<img src="{{asset('Frontend/images/wishlist.png')}}" class="img-fluid">
 							</a>
 							<a class="show-product-popup" id="profile_view_1">
 								<i class="fas fa-eye"></i>
@@ -272,7 +272,7 @@ your next hair trim belongs?</p>
 						</div>
 
 						<!-- main thumbnail -->
-						<img src="images/12-1-170x185.jpg" class="img-fluid">
+						<img src="{{asset('Frontend/images/12-1-170x185.jpg')}}" class="img-fluid">
 						<!-- main thumbnail -->
 
 						<!-- go product details -->
@@ -284,7 +284,7 @@ your next hair trim belongs?</p>
 						
 						<div class="product-item-cart">
 							<a href="">
-								<img src="images/cart-bag.png"> add to bag
+								<img src="{{asset('Frontend/images/cart-bag.png')}}"> add to bag
 							</a>
 						</div>
 						<ul>
@@ -304,7 +304,7 @@ your next hair trim belongs?</p>
 						<div class="product-hover-item">
 							<p>-15%</p>
 							<a href="">
-								<img src="images/wishlist.png" class="img-fluid">
+								<img src="{{asset('Frontend/images/wishlist.png')}}" class="img-fluid">
 							</a>
 							<a class="show-product-popup" id="profile_view_1">
 								<i class="fas fa-eye"></i>
@@ -312,7 +312,7 @@ your next hair trim belongs?</p>
 						</div>
 
 						<!-- main thumbnail -->
-						<img src="images/12-1-170x185.jpg" class="img-fluid">
+						<img src="{{asset('Frontend/images/12-1-170x185.jpg')}}" class="img-fluid">
 						<!-- main thumbnail -->
 
 						<!-- go product details -->
@@ -324,7 +324,7 @@ your next hair trim belongs?</p>
 						
 						<div class="product-item-cart">
 							<a href="">
-								<img src="images/cart-bag.png"> add to bag
+								<img src="{{asset('Frontend/images/cart-bag.png')}}"> add to bag
 							</a>
 						</div>
 						<ul>
@@ -344,7 +344,7 @@ your next hair trim belongs?</p>
 						<div class="product-hover-item">
 							<p>-15%</p>
 							<a href="">
-								<img src="images/wishlist.png" class="img-fluid">
+								<img src="{{asset('Frontend/images/wishlist.png')}}" class="img-fluid">
 							</a>
 							<a class="show-product-popup" id="profile_view_1">
 								<i class="fas fa-eye"></i>
@@ -352,7 +352,7 @@ your next hair trim belongs?</p>
 						</div>
 
 						<!-- main thumbnail -->
-						<img src="images/12-1-170x185.jpg" class="img-fluid">
+						<img src="{{asset('Frontend/images/12-1-170x185.jpg')}}" class="img-fluid">
 						<!-- main thumbnail -->
 
 						<!-- go product details -->
@@ -364,7 +364,7 @@ your next hair trim belongs?</p>
 						
 						<div class="product-item-cart">
 							<a href="">
-								<img src="images/cart-bag.png"> add to bag
+								<img src="{{asset('Frontend/images/cart-bag.png')}}"> add to bag
 							</a>
 						</div>
 						<ul>

@@ -57,17 +57,17 @@
 						<ul>
 							<li>
 								<a href="">
-									<img src="images/login.png">
+									<img src="{{asset('Frontend/images/login.png')}}">
 								</a>
 							</li>
 							<li>
 								<a href="">
-									<img src="images/logintwitter.png">
+									<img src="{{asset('Frontend/images/logintwitter.png')}}">
 								</a>
 							</li>
 							<li>
 								<a href="">
-									<img src="images/loginfb.png">
+									<img src="{{asset('Frontend/images/loginfb.png')}}">
 								</a>
 							</li>
 						</ul>
@@ -76,10 +76,10 @@
 			</div>
 
 			<div class="col-md-6 sign-up-right">
-				<img src="images/signup.png" class="img-fluid">
+				<img src="{{asset('Frontend/images/signup.png')}}" class="img-fluid">
 				<div class="sign-up-right-hover">
 					<a href="index.php">
-						<img src="images/logo.png">
+						<img src="{{asset('Frontend/images/logo.png')}}">
 					</a>
 				</div>
 			</div>

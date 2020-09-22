@@ -9,7 +9,7 @@
 
 			<!-- left part start -->
 			<div class="col-md-6 about-img">
-				<img src="images/about.png" class="img-fluid">
+				<img src="{{ asset('frontend/images/about.png') }}" class="img-fluid">
 			</div>
 			<!-- left part end -->
 

@@ -33,7 +33,7 @@
 				<div class="shop-left-image for-mob">
 					<a href="">
 						
-						<img src="images/03_ShopGrid_1_Column_2.png" class="img-fluid">
+						<img src="{{asset('Frontend/images/03_ShopGrid_1_Column_2.png')}}" class="img-fluid">
 
 						<!-- child item start -->
 						<div class="shop-left-image-child">
@@ -135,7 +135,7 @@
 				<div class="shop-left-image for-pc">
 					<a href="">
 						
-						<img src="images/03_ShopGrid_1_Column_2.png" class="img-fluid">
+						<img src="{{asset('Frontend/images/03_ShopGrid_1_Column_2.png')}}" class="img-fluid">
 
 						<!-- child item start -->
 						<div class="shop-left-image-child">
@@ -200,7 +200,7 @@
 									<div class="product-hover-item">
 										<p>-15%</p>
 										<a href="">
-											<img src="images/wishlist.png" class="img-fluid">
+											<img src="{{asset('Frontend/images/wishlist.png')}}" class="img-fluid">
 										</a>
 										<a class="show-product-popup" id="profile_view_1">
 	                                    	<i class="fas fa-eye"></i>
@@ -208,7 +208,7 @@
 									</div>
 
 									<!-- main thumbnail -->
-									<img src="images/12-1-170x185.jpg" class="img-fluid">
+									<img src="{{asset('Frontend/images/12-1-170x185.jpg')}}" class="img-fluid">
 									<!-- main thumbnail -->
 
 									<!-- go product details -->
@@ -220,7 +220,7 @@
 									
 									<div class="product-item-cart">
 										<a href="">
-											<img src="images/cart-bag.png"> add to bag
+											<img src="{{asset('Frontend/images/cart-bag.png')}}"> add to bag
 										</a>
 									</div>
 									<ul>
@@ -245,24 +245,24 @@
 												<div class="col-md-6">
 													<div class="product-main-img">
 														<a href="product-details.php">
-															<img src="images/product_4.jpg" class="img-fluid to-img1 ">
-															<img src="images/9-1-170x185.jpg" class="img-fluid to-img2 ">
-															<img src="images/product_1.png" class="img-fluid to-img3">
+															<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid to-img1 ">
+															<img src="{{asset('Frontend/images/9-1-170x185.jpg')}}" class="img-fluid to-img2 ">
+															<img src="{{asset('Frontend/images/product_1.png')}}" class="img-fluid to-img3">
 														</a>
 													</div>
 
 													<!-- bottom image select start -->
 													<div class="row product-bottom-img-row produc-quick-view-img">
 														<div class="col-md-4 col-4">
-															<img src="images/product_4.jpg" class="img-fluid for-img1">
+															<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid to-img1 ">
 															<i class="fas fa-caret-up caret-one"></i>
 														</div>
 														<div class="col-md-4 col-4">
-															<img src="images/9-1-170x185.jpg" class="img-fluid for-img2" >
+															<img src="{{asset('Frontend/images/9-1-170x185.jpg')}}" class="img-fluid to-img2 ">
 															<i class="fas fa-caret-up caret-two"></i>
 														</div>
 														<div class="col-md-4 col-4">
-															<img src="images/product_1.png" class="img-fluid for-img3">
+															<img src="{{asset('Frontend/images/product_1.png')}}" class="img-fluid to-img3">
 															<i class="fas fa-caret-up caret-three"></i>
 														</div>
 													</div>
@@ -409,7 +409,7 @@
 						<div class="product-hover-item">
 							<p>-15%</p>
 							<a href="">
-								<img src="images/wishlist.png" class="img-fluid">
+								<img src="{{asset('Frontend/images/wishlist.png')}}" class="img-fluid">
 							</a>
 							<a class="show-product-popup" id="profile_view_1">
 								<i class="fas fa-eye"></i>
@@ -417,7 +417,7 @@
 						</div>
 
 						<!-- main thumbnail -->
-						<img src="images/12-1-170x185.jpg" class="img-fluid">
+						<img src="{{asset('Frontend/images/12-1-170x185.jpg')}}" class="img-fluid">
 						<!-- main thumbnail -->
 
 						<!-- go product details -->
@@ -429,7 +429,7 @@
 						
 						<div class="product-item-cart">
 							<a href="">
-								<img src="images/cart-bag.png"> add to bag
+								<img src="{{asset('Frontend/images/cart-bag.png')}}"> add to bag
 							</a>
 						</div>
 						<ul>
@@ -458,24 +458,24 @@
 								<div class="col-md-6">
 									<div class="product-main-img">
 										<a href="product-details.php">
-											<img src="images/product_4.jpg" class="img-fluid to-img1 ">
-											<img src="images/9-1-170x185.jpg" class="img-fluid to-img2 ">
-											<img src="images/product_1.png" class="img-fluid to-img3">
+											<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid to-img1 ">
+											<img src="{{asset('Frontend/images/9-1-170x185.jpg')}}" class="img-fluid to-img2 ">
+											<img src="{{asset('Frontend/images/product_1.png')}}" class="img-fluid to-img3">
 										</a>
 									</div>
 
 									<!-- bottom image select start -->
 									<div class="row product-bottom-img-row produc-quick-view-img">
 										<div class="col-md-4 col-4">
-											<img src="images/product_4.jpg" class="img-fluid for-img1">
+											<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid to-img1 ">
 											<i class="fas fa-caret-up caret-one"></i>
 										</div>
 										<div class="col-md-4 col-4">
-											<img src="images/9-1-170x185.jpg" class="img-fluid for-img2" >
+											<img src="{{asset('Frontend/images/9-1-170x185.jpg')}}" class="img-fluid to-img2 ">
 											<i class="fas fa-caret-up caret-two"></i>
 										</div>
 										<div class="col-md-4 col-4">
-											<img src="images/product_1.png" class="img-fluid for-img3">
+											<img src="{{asset('Frontend/images/product_1.png')}}" class="img-fluid to-img3">
 											<i class="fas fa-caret-up caret-three"></i>
 										</div>
 									</div>

@@ -89,7 +89,7 @@
 										
 										<!-- thumbnail start -->
 										<div class="col-md-1">
-											<img src="images/product_4.jpg" class="img-fluid">
+											<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid">
 										</div>
 										<!-- thumbnail end -->
 
@@ -127,7 +127,7 @@
 										
 										<!-- thumbnail start -->
 										<div class="col-md-1">
-											<img src="images/9-1-170x185.jpg" class="img-fluid">
+											<img src="{{asset('Frontend/images/9-1-170x185.jpg')}}" class="img-fluid">
 										</div>
 										<!-- thumbnail end -->
 
