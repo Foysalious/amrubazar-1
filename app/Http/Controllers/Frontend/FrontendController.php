@@ -13,4 +13,44 @@ class FrontendController extends Controller
         return view('frontend.pages.index');
     }
 
+     //about show
+     public function about(){
+        return view('frontend.pages.about');
+    }
+
+     //checkout show
+     public function checkout(){
+        return view('frontend.pages.checkout');
+    }
+
+     //contact show
+     public function contact(){
+        return view('frontend.pages.contact');
+    }
+
+     //login show
+     public function login(){
+        return view('frontend.pages.login');
+    }
+
+     //Product-details show
+     public function productDetails(){
+        return view('frontend.pages.product-details');
+    }
+
+     //profile show
+     public function profile(){
+        return view('frontend.pages.profile');
+    }
+
+       //shop show
+       public function shop(){
+        return view('frontend.pages.shop');
+    }
+
+     //signup show
+     public function signup(){
+        return view('frontend.pages.signup');
+    }
+
 }

@@ -85,3 +85,11 @@ Route::group(['prefix'=>'dashboard', 'middleware'=>'auth'], function(){
 |
 */
 Route::get('/',[FrontendController::class,'index'])->name('index');
+Route::get('/about',[FrontendController::class,'about'])->name('about');
+Route::get('/checkout',[FrontendController::class,'checkout'])->name('checkout');
+Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
+Route::get('/login',[FrontendController::class,'login'])->name('login');
+Route::get('/productDetails',[FrontendController::class,'productDetails'])->name('productDetails');
+Route::get('/profile',[FrontendController::class,'profile'])->name('profile');
+Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
+Route::get('/signup',[FrontendController::class,'signup'])->name('signup');
