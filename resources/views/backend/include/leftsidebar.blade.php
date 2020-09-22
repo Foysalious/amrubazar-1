@@ -82,6 +82,19 @@
                         </li>
                         <!-- nav single view end -->
 
+                         <!-- nav single view start -->
+                         <li >
+                            <a href="{{ route('bannerShow') }}">
+                            <div class="left">
+                                Home Page Banner
+                            </div>
+                            <div class="right">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            </a>
+                        </li>
+                        <!-- nav single view end -->
+
                         <!-- nav drop down view start -->
                         <li>
                             <div class="row navbar-dropdown-top" id="1">

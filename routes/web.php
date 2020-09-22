@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\LogoController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\homeImageController;
 use App\Http\Controllers\Frontend\FrontendController;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -33,6 +35,15 @@ Route::group(['prefix'=>'dashboard', 'middleware'=>'auth'], function(){
         Route::post('/delete/{category:id}',[CategoryController::class,'destroy'])->name('category.delete');
     });
     //category route end
+
+    //Banner route start
+    Route::group(['prefix' => 'banner'], function(){
+        Route::get('/',[homeImageController::class, 'index'])->name('bannerShow');
+        Route::post('/store',[homeImageController::class,'store'])->name('bannerStore');
+        Route::post('/update/{id}',[homeImageController::class,'update'])->name('bannerUpdate');
+        Route::post('/delete/{id}',[homeImageController::class,'destroy'])->name('bannerDelete');
+    });
+    //Banner route end
 
     //logo route start
     Route::group(['prefix' => 'logo'], function(){
