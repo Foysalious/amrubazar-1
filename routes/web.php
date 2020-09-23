@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\LogoController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\homeImageController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\FrontendController;
 
 use Illuminate\Support\Facades\Auth;
@@ -44,6 +45,15 @@ Route::group(['prefix'=>'dashboard', 'middleware'=>'auth'], function(){
         Route::post('/delete/{id}',[homeImageController::class,'destroy'])->name('bannerDelete');
     });
     //Banner route end
+
+    //Slider route start
+    Route::group(['prefix' => 'slider'], function(){
+        Route::get('/',[SliderController::class, 'index'])->name('sliderShow');
+        Route::post('/store',[SliderController::class,'store'])->name('sliderStore');
+        Route::post('/update/{slider:id}',[SliderController::class,'update'])->name('sliderUpdate');
+        Route::post('/delete/{slider:id}',[SliderController::class,'destroy'])->name('sliderDelete');
+    });
+    //Slider route end
 
     //logo route start
     Route::group(['prefix' => 'logo'], function(){
@@ -100,7 +110,7 @@ Route::get('/about',[FrontendController::class,'about'])->name('about');
 Route::get('/checkout',[FrontendController::class,'checkout'])->name('checkout');
 Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
 Route::get('/login',[FrontendController::class,'login'])->name('login');
-Route::get('/productDetails',[FrontendController::class,'productDetails'])->name('productDetails');
+Route::get('/productDetails/{product:slug}',[FrontendController::class,'productDetails'])->name('productDetails');
 Route::get('/profile',[FrontendController::class,'profile'])->name('profile');
 Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
 Route::get('/signup',[FrontendController::class,'signup'])->name('signup');

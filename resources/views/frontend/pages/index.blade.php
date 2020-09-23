@@ -11,29 +11,25 @@
 			<div class="banner-carousel owl-carousel owl-theme">
    		 		
 				<!-- banner item start -->
+				@foreach(App\Models\Backend\Slider::orderBy('id','asc')->get() as $slider) 
    		 		<div class="item">
    		 			<div class="col-md-12">
    		 				<div class="row">
-   		 					<!-- left part start -->
-							<div class="col-md-6">
-								<div class="banner-left">
-									<h1>Fresh fruit & grocery</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-									<a href="">we are the best</a>
-								</div>
-							</div>
-							<!-- left part end -->
+   		 					
 
 							<!-- right part start -->
-							<div class="col-md-6">
+							
+							<div class="col-md-12">
 								<div class="banner-right">
-									<img src="{{ asset('frontend/images/banner.png') }}" class="img-fluid">
+									<img src="{{ asset('images/slider/'.$slider->image) }}" class="img-fluid">
 								</div>
 							</div>
+							
 							<!-- right part end -->
    		 				</div>
    		 			</div>
-   		 		</div>
+					</div>
+					@endforeach
    		 		<!-- banner item end -->
 
    		 	</div>
@@ -43,7 +39,9 @@
 	</div>
 </section>
 <!-- banner section end -->
+
 <!-- product section start -->
+@foreach(App\Models\Frontend\homeBannerImg::orderBy('id','asc')->get() as $adImage) 
 <section class="home-product section-padding">
 	<div class="container-fluid">
 		
@@ -53,7 +51,7 @@
 			<!-- left part start -->
 			<div class="col-md-3">
 				<div class="home-product-left-image">
-					<img src="{{ asset('frontend/images/banner-product-left-01.jpg') }}" class="img-fluid">
+					<img src="{{ asset('images/addImages/'.$adImage->left_image) }}" class="img-fluid">
 				</div>
 
 				<!-- support 24/7 start -->
@@ -216,31 +214,39 @@
 				</div>
 				<!-- filtering item row end -->
 
+
+
 				<!-- filter wise product show start new arrivals-->
 				<div class="row filter-product-list  one">
 					
 					<!-- product item start -->
+					@foreach(App\Models\Backend\Product::orderBy('id','desc')->where('is_featured', 1)->where('status', 1)->get() as $product) 
 					<div class="col-md-3 col-6 product-hover">
 						<div class="product-item-01">
 							<div class="product-hover-item">
-								<p>-15%</p>
-								<a href="">
-									<img src="{{ asset('frontend/images/wishlist.png') }}" class="img-fluid">
-								</a>
-								<a class="show-product-popup" id="profile_view_1">
+								
+								
+							<a class="show-product-popup" id="{{ $product->id }}">
 									<i class="fas fa-eye"></i>
 								</a>
 							</div>
 
 							<!-- main thumbnail -->
-							<img src="{{ asset('frontend/images/12-1-170x185.jpg') }}" class="img-fluid">
+						<a href="{{route('productDetails',$product->slug)}}">
+								<img src="{{ asset('images/product/'.$product->images[0]->image) }}" class="img-fluid">
+							</a>
 							<!-- main thumbnail -->
 
 							<!-- go product details -->
-							<a href="">
-								<p>Organic Broccoli</p>
-								<span>280.99 Tk</span>
-							</a>
+							<p>{{$product->name}}</p>
+							
+							@if($product->offer_price==NULL)
+							<span>{{$product->regular_price}}TK </span>
+							@else
+							<span>{{$product->offer_price}}TK </span>
+							<span> <del> {{$product->regular_price}}TK </del></span>
+							@endif
+							
 							<!-- go product details -->
 							
 							<div class="product-item-cart">
@@ -257,9 +263,8 @@
 							</ul>
 						</div>
 					</div>
-					<!-- product item end -->
 					<!-- product quick view popup start -->
-					<div class="product-quick-view profile_view_1">
+					<div class="product-quick-view {{ $product->id }}">
 						<i class="fas fa-times hide-quick-view"></i>
 						<div class="container">
 							<div class="row">
@@ -270,35 +275,16 @@
 										<div class="col-md-6">
 											<div class="product-main-img">
 												<a href="product-details.php">
-													<img src="{{ asset('frontend/images/product_4.jpg') }}" class="img-fluid to-img1 ">
-													<img src="{{ asset('frontend/images/9-1-170x185.jpg') }}" class="img-fluid to-img2 ">
-													<img src="{{ asset('frontend/images/product_1.png') }}" class="img-fluid to-img3">
+													<img src="{{ asset('images/product/'.$product->images[0]->image) }}" class="img-fluid to-img1 ">
 												</a>
 											</div>
-
-											<!-- bottom image select start -->
-											<div class="row product-bottom-img-row produc-quick-view-img">
-												<div class="col-md-4 col-4">
-													<img src="{{ asset('frontend/images/product_4.jpg') }}" class="img-fluid for-img1">
-													<i class="fas fa-caret-up caret-one"></i>
-												</div>
-												<div class="col-md-4 col-4">
-													<img src="{{ asset('frontend/images/9-1-170x185.jpg') }}" class="img-fluid for-img2" >
-													<i class="fas fa-caret-up caret-two"></i>
-												</div>
-												<div class="col-md-4 col-4">
-													<img src="{{ asset('frontend/images/product_1.png') }}" class="img-fluid for-img3">
-													<i class="fas fa-caret-up caret-three"></i>
-												</div>
-											</div>
-											<!-- bottom image select end -->
 										</div>
 										<!-- left part end -->
 
 										<!-- right part start -->
 										<div class="col-md-6">
 											<div class="product-quick-view-right">
-												<h2 class="quick-view-heading">black grape</h2>
+											<h2 class="quick-view-heading">{{ $product->name }}</h2>
 
 												<!-- review start -->
 												<div class="row">
@@ -340,8 +326,14 @@
 
 												<!-- price row start -->
 												<div class="row">
-													<div class="col-md-12">
-														<h2 class="quick-view-heading">240.00 tk/kg</h2>
+													<div class="col-md-12 quick-view-heading">
+														@if($product->offer_price==NULL)
+															<span>{{$product->regular_price}}TK </span>
+															@else
+															<span>{{$product->offer_price}}TK </span>
+															<span> <del> {{$product->regular_price}}TK </del></span>
+															@endif
+														
 													</div>
 												</div>
 												<!-- price row end -->
@@ -352,7 +344,7 @@
 														<h2 >description</h2>
 													</div>
 													<div class="col-md-12">
-														<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+														<p>{{$product->description}}</p>
 													</div>
 												</div>
 												<!-- description row end -->
@@ -367,9 +359,16 @@
 						</div>
 					</div>
 					<!-- product quick view popup  end -->
+					@endforeach
+					<!-- product item end -->
+					
+					
 
 				</div>
 				<!-- filter wise product show end new arrivals-->
+
+
+
 
 				<!-- filter wise product show start new best seller-->
 				<div class="row filter-product-list hide-item three">
@@ -388,14 +387,14 @@
 							</div>
 
 							<!-- main thumbnail -->
-							<img src="{{ asset('frontend/images/12-1-170x185.jpg') }}" class="img-fluid">
+							<a href="">
+								<img src="{{ asset('frontend/images/12-1-170x185.jpg') }}" class="img-fluid">
+							</a>
 							<!-- main thumbnail -->
 
 							<!-- go product details -->
-							<a href="">
-								<p>Organic Broccoli</p>
-								<span>280.99 Tk</span>
-							</a>
+							<p>Organic Broccoli</p>
+							<span>280.99 Tk</span>
 							<!-- go product details -->
 							
 							<div class="product-item-cart">
@@ -413,6 +412,8 @@
 						</div>
 					</div>
 					<!-- product item end -->
+
+
 					<!-- product quick view popup start -->
 					<div class="product-quick-view profile_view_1">
 						<i class="fas fa-times hide-quick-view"></i>
@@ -532,7 +533,7 @@
 			<!-- right part start -->
 			<div class="col-md-1">
 				<div class="home-product-right-image">
-					<img src="{{ asset('frontend/images/01_Home_amrubazar scroll.png') }}" class="img-fluid">
+					<img src="{{ asset('images/addImages/'.$adImage->right_image) }}" class="img-fluid">
 				</div>
 			</div>
 			<!-- right part end -->
@@ -546,210 +547,195 @@
 
 
 <!-- feature banner start -->
-<section class="feature-banner" style="background-image: url( {{ asset('frontend/images/slider2.jpg') }} ); " >
+
+<section class="feature-banner" style="background-image: url( {{ asset('images/addImages/'.$adImage->bottom_image) }} ); " >
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12"></div>
 		</div>
 	</div>
 </section>
+
+@endforeach
 <!-- feature banner end -->
 
 
 <!-- feature product start  -->
+
+@foreach(App\Models\Backend\Category::orderBy('id','desc')->where('is_delete', 0)->where('parent_id', '!=',0)->get() as $category) 
+@if( count( App\Models\Backend\Product::orderBy('id','desc')->where('status', 1)->where('cat_id', $category->id )->get() ) > 0 )
 <section class="featre-product section-padding">
 	<div class="container">
+
+		<!-- category name here start -->
+		<div class="row">
+			<div class="col-md-12">
+				<h2>{{$category->name}}</h2>
+			</div>
+		</div>
+		<!-- category name here end -->
+
 		<div class="row">
 			
-			<!-- left part start -->
-			<div class="col-md-8">
-				<div class="row">
-					
-					<!-- product item start -->
-					<div class="col-md-3 col-6 product-hover">
-						<div class="product-item-01">
-							<div class="product-hover-item">
-								<p>-15%</p>
-								<a href="">
-									<img src="{{ asset('frontend/images/wishlist.png') }}" class="img-fluid">
-								</a>
-								<a class="show-product-popup" id="profile_view_1">
-									<i class="fas fa-eye"></i>
-								</a>
-							</div>
-
-							<!-- main thumbnail -->
-							<img src="{{ asset('frontend/images/12-1-170x185.jpg') }}" class="img-fluid">
-							<!-- main thumbnail -->
-
-							<!-- go product details -->
-							<a href="">
-								<p>Organic Broccoli</p>
-								<span>280.99 Tk</span>
-							</a>
-							<!-- go product details -->
-							
-							<div class="product-item-cart">
-								<a href="">
-									<img src="{{ asset('frontend/images/cart-bag.png') }}"> add to bag
-								</a>
-							</div>
-							<ul>
-								<li><i class="fas fa-star"></i></li>
-								<li><i class="fas fa-star"></i></li>
-								<li><i class="fas fa-star"></i></li>
-								<li><i class="fas fa-star"></i></li>
-								<li><i class="fas fa-star"></i></li>
-							</ul>
-						</div>
+			<!-- product item start -->
+			@foreach(App\Models\Backend\Product::orderBy('id','desc')->where('status', 1)->where('cat_id', $category->id)->take(8)->get() as $product) 
+			<div class="col-md-3 col-6 product-hover">
+				<div class="product-item-01">
+					<div class="product-hover-item">
+						
+						
+						<a class="show-product-popup" id="{{$product->id}}">
+							<i class="fas fa-eye"></i>
+						</a>
 					</div>
-					<!-- product item end -->
-					<!-- product quick view popup start -->
-					<div class="product-quick-view profile_view_1">
-						<i class="fas fa-times hide-quick-view"></i>
-						<div class="container">
+
+					<!-- main thumbnail -->
+					<a href="{{route('productDetails',$product->slug)}}">
+						<img src="{{ asset('images/product/'.$product->images[0]->image) }}" class="img-fluid">
+					</a>
+					<!-- main thumbnail -->
+
+					<!-- go product details -->
+					<p>{{$product->name}}</p>
+					
+					@if($product->offer_price==NULL)
+					<span>{{$product->regular_price}} </span>
+					@else
+					<span>{{$product->offer_price}} </span>
+					<span> <del> {{$product->regular_price}} </del></span>
+					@endif
+					
+					<!-- go product details -->
+					
+					<div class="product-item-cart">
+						<a href="">
+							<img src="{{ asset('frontend/images/cart-bag.png') }}"> add to bag
+						</a>
+					</div>
+					<ul>
+						<li><i class="fas fa-star"></i></li>
+						<li><i class="fas fa-star"></i></li>
+						<li><i class="fas fa-star"></i></li>
+						<li><i class="fas fa-star"></i></li>
+						<li><i class="fas fa-star"></i></li>
+					</ul>
+				</div>
+			</div>
+			
+			<!-- product item end -->
+
+			<!-- product quick view popup start -->
+			<div class="product-quick-view {{$product->id}}">
+				<i class="fas fa-times hide-quick-view"></i>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 product-quick-view-main-box" >
+							
 							<div class="row">
-								<div class="col-md-12 product-quick-view-main-box" >
-									
-									<div class="row">
-										<!-- left part start -->
-										<div class="col-md-6">
-											<div class="product-main-img">
-												<a href="product-details.php">
-													<img src="{{ asset('frontend/images/product_4.jpg') }}" class="img-fluid to-img1 ">
-													<img src="{{ asset('frontend/images/9-1-170x185.jpg') }}" class="img-fluid to-img2 ">
-													<img src="{{ asset('frontend/images/product_1.png') }}" class="img-fluid to-img3">
-												</a>
+								<!-- left part start -->
+								<div class="col-md-6">
+									<div class="product-main-img">
+										<a href="product-details.php">
+											<img src="{{ asset('images/product/'.$product->images[0]->image) }}" class="img-fluid to-img1 ">
+										
+										</a>
+									</div>
+
+							
+								</div>
+								<!-- left part end -->
+
+								<!-- right part start -->
+								<div class="col-md-6">
+									<div class="product-quick-view-right">
+										<h2 class="quick-view-heading">{{$product->name}}</h2>
+
+										<!-- review start -->
+										<div class="row">
+											<div class="col-md-6 col-6 product-quick-view-right-left">
+												<ul>
+													<li>
+														<a href=""><i class="fas fa-star"></i></a>
+													</li>
+													<li>
+														<a href=""><i class="fas fa-star"></i></a>
+													</li>
+													<li>
+														<a href=""><i class="fas fa-star"></i></a>
+													</li>
+													<li>
+														<a href=""><i class="fas fa-star"></i></a>
+													</li>
+													<li>
+														<a href=""><i class="fas fa-star"></i></a>
+													</li>
+												</ul>
 											</div>
-
-											<!-- bottom image select start -->
-											<div class="row product-bottom-img-row produc-quick-view-img">
-												<div class="col-md-4 col-4">
-													<img src="{{ asset('frontend/images/product_4.jpg') }}" class="img-fluid for-img1">
-													<i class="fas fa-caret-up caret-one"></i>
-												</div>
-												<div class="col-md-4 col-4">
-													<img src="{{ asset('frontend/images/9-1-170x185.jpg') }}" class="img-fluid for-img2" >
-													<i class="fas fa-caret-up caret-two"></i>
-												</div>
-												<div class="col-md-4 col-4">
-													<img src="{{ asset('frontend/images/product_1.png') }}" class="img-fluid for-img3">
-													<i class="fas fa-caret-up caret-three"></i>
-												</div>
-											</div>
-											<!-- bottom image select end -->
-										</div>
-										<!-- left part end -->
-
-										<!-- right part start -->
-										<div class="col-md-6">
-											<div class="product-quick-view-right">
-												<h2 class="quick-view-heading">black grape</h2>
-
-												<!-- review start -->
-												<div class="row">
-													<div class="col-md-6 col-6 product-quick-view-right-left">
-														<ul>
-															<li>
-																<a href=""><i class="fas fa-star"></i></a>
-															</li>
-															<li>
-																<a href=""><i class="fas fa-star"></i></a>
-															</li>
-															<li>
-																<a href=""><i class="fas fa-star"></i></a>
-															</li>
-															<li>
-																<a href=""><i class="fas fa-star"></i></a>
-															</li>
-															<li>
-																<a href=""><i class="fas fa-star"></i></a>
-															</li>
-														</ul>
-													</div>
-													<div class="col-md-6 col-6">
-														<p>122 reviews</p>
-													</div>
-												</div>
-												<!-- review end -->
-
-												<!-- avaiablity and stock start -->
-												<div class="row available">
-													<div class="col-md-6 col-6">
-														<h2>availablity : </h2>
-													</div>
-													<div class="col-md-6 col-6">
-														<h2>in stock</h2>
-													</div>
-												</div>
-												<!-- avaiablity and stock end -->
-
-												<!-- price row start -->
-												<div class="row">
-													<div class="col-md-12">
-														<h2 class="quick-view-heading">240.00 tk/kg</h2>
-													</div>
-												</div>
-												<!-- price row end -->
-
-												<!-- description row start -->
-												<div class="row">
-													<div class="col-md-12">
-														<h2 >description</h2>
-													</div>
-													<div class="col-md-12">
-														<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-													</div>
-												</div>
-												<!-- description row end -->
-
+											<div class="col-md-6 col-6">
+												<p>122 reviews</p>
 											</div>
 										</div>
-										<!-- right part end -->
+										<!-- review end -->
+
+										<!-- avaiablity and stock start -->
+										<div class="row available">
+											<div class="col-md-6 col-6">
+												<h2>availablity : </h2>
+											</div>
+											<div class="col-md-6 col-6">
+												<h2>in stock</h2>
+											</div>
+										</div>
+										<!-- avaiablity and stock end -->
+
+										<!-- price row start -->
+										<div class="row">
+											<div class="col-md-12">
+												<h2 class="quick-view-heading">	@if($product->offer_price==NULL)
+													<span>{{$product->regular_price}}TK </span>
+													@else
+													<span>{{$product->offer_price}}TK </span>
+													<span> <del> {{$product->regular_price}}TK </del></span>
+													@endif</h2>
+											</div>
+										</div>
+										<!-- price row end -->
+
+										<!-- description row start -->
+										<div class="row">
+											<div class="col-md-12">
+												<h2 >description</h2>
+											</div>
+											<div class="col-md-12">
+												<p>{{$product->description}}</p>
+											</div>
+										</div>
+										<!-- description row end -->
 
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-					<!-- product quick view popup  end -->
+								<!-- right part end -->
 
-				</div>
-			</div>
-			<!-- left part end -->
-
-			<!-- right part start -->
-			<div class="col-md-4">
-				<div class="row">
-					<div class="col-md-12 feature-thumbnail">
-						<div class="product-item-02">
-							
-							<!-- main thumbnail -->
-							<a href="">
-								<img src="{{ asset('frontend/images/product_4.jpg') }}" class="img-fluid">
-							</a>
-							<!-- main thumbnail -->
-
-							<!--  product details -->
-							<p>Organic Broccoli</p>
-							<span>280.99 Tk</span>
-							<!--  product details -->
-
-							<div class="feature-product-hover">
-								<a href="">
-									<img src="{{ asset('frontend/images/cart-bag.png') }}"> add to bag
-								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- right part end -->
+			@endforeach
+			<!-- product quick view popup  end -->
 
 		</div>
 	</div>
 </section>
+@endif
+@endforeach
 <!-- feature product end  -->
+
+
+
+
+
+
 
 
 <!-- sign up section start -->

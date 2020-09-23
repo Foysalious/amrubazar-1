@@ -14,7 +14,7 @@
                             <i class="fas fa-bars"></i>
                         </li>
                         <li>
-                            Banner Image
+                            Home Slider
                         </li>
                     </ul>
                 </div>
@@ -26,55 +26,76 @@
         <section class="statistics">
 
             <!-- flash message row start -->
-            
+            <div class="row">
+                <div class="col-md-12">
+                    @if( session()->has('create') )
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Congratulation!</strong> {{ session()->get('create') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif 
+                    @if( session()->has('createFailed') )
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Congratulation!</strong> {{ session()->get('createFailed') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif 
+                    @if( session()->has('update') )
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Congratulation!</strong> {{ session()->get('update') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif 
+                    @if( session()->has('delete') )
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Congratulation!</strong> {{ session()->get('delete') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif                
+                </div>
+            </div>
             <!-- flash message row end -->
 
             <!-- add row start -->
             <div class="row add-row">
                 <div class="col-md-12 text-right">
-                    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        add Banner Image
-                    </button> --}}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        add new slider
+                    </button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
-                                <h3 class="modal-title" id="exampleModalLabel">category</h3>
+                                <h3 class="modal-title" id="exampleModalLabel">slider</h3>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('bannerStore') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('sliderStore') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                     
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Right image</label>
+                                                <label>Home Page Slider</label>
                                                 <img src="{{ asset('backend/images/thumbnail.jpg') }}" id="image_preview_container" class="default-thhumbnail" width="100px" alt=""> 
-                                                <input type="file" class="form-control-file" name="right_image" id="image">                                 
+                                                <input type="file" class="form-control-file" name="image" id="image">                                 
                                             </div>                                      
                                         </div>    
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Left Image</label>   
-                                                <img src="{{ asset('backend/images/thumbnail.jpg') }}" id="image_preview_container_2" class="default-thhumbnail" width="100px" alt=""> 
-                                                <input type="file" class="form-control-file" name="left_image" id="image2">                                 
-                                            </div>                                        
-                                        </div>  
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Bottom Image</label>   
-                                                <img src="{{ asset('backend/images/thumbnail.jpg') }}" id="image_preview_container_2" class="default-thhumbnail" width="100px" alt=""> 
-                                                <input type="file" class="form-control-file" name="bottom_image" id="image2">                                 
-                                            </div>                                        
-                                        </div>                                
+                                                                      
                                     </div>
                                     
-                                
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Add</button>                                    
                                     </div>
@@ -101,9 +122,8 @@
                         <thead>
                             <tr>
                                 <td>Id</td>
-                                <td>Left Banner</td>
-                                <td>Right Banner</td>
-                                <td>Bottom Banner</td>
+                                <td>Slider Image</td>
+                               
                                 <td>action</td>
                             </tr>
                         </thead>
@@ -111,74 +131,44 @@
                             @php
                                 $i = 1;
                             @endphp
-                            @foreach($images as $image)
+                            @foreach($sliders as $slider)
                             <tr>
                                 <th>{{ $i }}</th>
                                 <td>
-                                    @if( $image->left_image != NULL )
-                                    <img src="{{ asset('images/addImages/'.$image->left_image) }}" class="img-fluid" width="50px" alt="">
-                                    @else
-                                    <p class="badge badge-danger">image uploaded</p>
-                                    @endif
-                                </td>
-
-                                <td>
-                                    @if( $image->right_image != NULL )
-                                    <img src="{{ asset('images/addImages/'.$image->right_image) }}" class="img-fluid" width="15px" alt="">
+                                    @if( $slider->image != NULL )
+                                    <img src="{{ asset('images/slider/'.$slider->image) }}" class="img-fluid" width="50px" alt="">
                                     @else
                                     <p class="badge badge-danger">No image uploaded</p>
                                     @endif
                                 </td>
-                                
-                                <td>
-                                    @if( $image->bottom_image != NULL )
-                                    <img src="{{ asset('images/addImages/'.$image->bottom_image) }}" class="img-fluid" width="50px" alt="">
-                                    @else
-                                    <p class="badge badge-danger">No image uploaded</p>
-                                    @endif
-                                </td>
-
                                 <td>
                                 
                                 <!-- edit start -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit{{ $image->id }}">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit{{ $slider->id }}">
                                     edit
                                 </button>
-                                <div class="modal fade" id="edit{{ $image->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="edit{{ $slider->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                         <div class="modal-header">
-                                            <h3 class="modal-title" id="exampleModalLabel">category</h3>
+                                            <h3 class="modal-title" id="exampleModalLabel">slider</h3>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('bannerUpdate', $image->id) }}" method="post" enctype="multipart/form-data">
+                                            <form action="{{ route('sliderUpdate', $slider->id) }}" method="post" enctype="multipart/form-data">
                                             @csrf
                                                
                                                 <div class="row">
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label>Left Banner</label>
-                                                            <img src="{{ asset('images/addImages/'. $image->left_image) }}"  width="100px" alt=""> 
-                                                            <input type="file" class="form-control-file" name="left_image">                                 
+                                                            <label>Slider Image *</label>
+                                                            <img src="{{ asset('images/slider/'. $slider->image) }}"  width="100px" alt=""> 
+                                                            <input type="file" class="form-control-file" name="image">                                 
                                                         </div>                                      
                                                     </div>    
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label>Right Banner</label>   
-                                                            <img src="{{ asset('images/addImages/' . $image->right_image) }}" width="15px" alt=""> 
-                                                            <input type="file" class="form-control-file" name="right_image" >                                 
-                                                        </div>                                        
-                                                    </div>     
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label>Bottom Banner</label>   
-                                                            <img src="{{ asset('images/addImages/' . $image->bottom_image) }}" width="100px" alt=""> 
-                                                            <input type="file" class="form-control-file" name="bottom_image" >                                 
-                                                        </div>                                        
-                                                    </div>                                
+                                                                                  
                                                 </div>
                                                 
                                                 <div class="form-group">
@@ -195,25 +185,25 @@
                                 <!-- edit end -->
 
                                 <!-- delete start -->
-                                {{-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $image->id }}">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $slider->id }}">
                                     delete
-                                </button> --}}
-                                <div class="modal fade" id="delete{{ $image->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                </button>
+                                <div class="modal fade" id="delete{{ $slider->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                         <div class="modal-header">
-                                            <h3 class="modal-title" id="exampleModalLabel">Banner delete</h3>
+                                            <h3 class="modal-title" id="exampleModalLabel">slider delete</h3>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        {{-- <div class="modal-footer">
-                                            <form action="{{ route('bannerDelete', $image->id) }}" method="post">
+                                        <div class="modal-footer">
+                                            <form action="{{ route('sliderDelete', $slider->id) }}" method="post">
                                                 @csrf
                                                 <button type="submit" class="btn btn-success">yes</button>
                                             </form>
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                                        </div> --}}
+                                        </div>
                                         </div>
                                     </div>
                                 </div>

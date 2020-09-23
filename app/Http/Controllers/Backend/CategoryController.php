@@ -16,7 +16,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() 
     {
         $categories = Category::orderBy('id','desc')->where('is_delete',0)->get();
         return view('backend.pages.category.manage', compact('categories'));

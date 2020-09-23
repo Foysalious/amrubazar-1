@@ -74,9 +74,9 @@
                             <label>select product category *</label>
                             <select name="cat_id" class="form-control" required>
                                 <option disabled selected>Select product Category</option>     
-                                @foreach( App\Models\Backend\Category::orderBy('id')->where('parent_id',!0)->get() as $parent_category )             
+                                @foreach( App\Models\Backend\Category::orderBy('id')->where('parent_id','!=',0)->get() as $parent_category )             
                                 <option value="{{ $parent_category->id }}"
-                                    @if( $product->cat_id == $product->category->id )
+                                    @if( $product->cat_id == $parent_category->id )
                                     selected
                                     @endif
                                 >{{ $parent_category->name }}</option>   

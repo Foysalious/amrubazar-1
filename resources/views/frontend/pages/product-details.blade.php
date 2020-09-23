@@ -11,23 +11,23 @@
 			<!-- left part start -->
 			<div class="col-md-4">
 				<div class="product-main-img">
-					<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid to-img1 block__pic">
-					<img src="{{asset('Frontend/images/9-1-170x185.jpg')}}" class="img-fluid to-img2 block__pic">
-					<img src="{{asset('Frontend/images/product_1.png')}}" class="img-fluid to-img3 block__pic">
+					<img src="{{asset('images/product/'.$product->images[0]->image)}}" class="img-fluid to-img1 block__pic">
+					<img src="{{asset('images/product/'.$product->images[1]->image)}}" class="img-fluid to-img2 block__pic">
+					<img src="{{asset('images/product/'.$product->images[2]->image)}}" class="img-fluid to-img3 block__pic">
 				</div>
 
 				<!-- bottom image select start -->
 				<div class="row product-bottom-img-row">
 					<div class="col-md-4 col-4">
-						<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid for-img1">
+						<img src="{{asset('images/product/'.$product->images[0]->image)}}" class="img-fluid for-img1">
 						<i class="fas fa-caret-up caret-one"></i>
 					</div>
 					<div class="col-md-4 col-4">
-						<img src="{{asset('Frontend/images/9-1-170x185.jpg')}}" class="img-fluid for-img2" >
+						<img src="{{asset('images/product/'.$product->images[1]->image)}}" class="img-fluid for-img2" >
 						<i class="fas fa-caret-up caret-two"></i>
 					</div>
 					<div class="col-md-4 col-4">
-						<img src="{{asset('Frontend/images/product_1.png')}}" class="img-fluid for-img3">
+						<img src="{{asset('images/product/'.$product->images[2]->image)}}" class="img-fluid for-img3">
 						<i class="fas fa-caret-up caret-three"></i>
 					</div>
 				</div>
@@ -39,15 +39,20 @@
 			<!-- right part start -->
 			<div class="col-md-8">
 				<div class="product-details-right">
-					<p>Food Item</p>
+					<p>{{$product->category->name}}</p>
 
 					<!-- title and price row start -->
 					<div class="row">
 						<div class="col-md-6 col-6">
-							<h2>Organic Berry Black</h2>
+							<h2>{{$product->name}}</h2>
 						</div>
 						<div class="col-md-6 col-6 product-details-right-price">
-							<h2>390.99 Tk</h2>
+							@if($product->offer_price==NULL)
+							<h2>{{$product->regular_price}}TK </h2>
+							@else
+							<h2>{{$product->offer_price}}TK </h2>
+							<h2> <del> {{$product->regular_price}}TK </del></h2>
+							@endif
 						</div>
 					</div>
 					<!-- title and price row end -->
@@ -82,13 +87,9 @@
 					<!-- description row start -->
 					<div class="row description-row">
 						<div class="col-md-12">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 	mini veniam, quis nostrud exercitation ullamco laboris nisi ut.
+							<p>{{$product->description}}
 							</p>
-							<ul>
-								<li>Delacious</li>
-								<li>Price worthy product</li>
-								<li>More then the market</li>
-							</ul>
+							
 						</div>
 					</div>
 					<!-- description row end -->
@@ -219,26 +220,34 @@ your next hair trim belongs?</p>
 			<div class="latest-product-carousel latest-product-carousel-shop owl-carousel owl-theme">
 
 				<!-- product item start -->
+				@foreach ($relatedProducts as $product)
+				
+					
+				
 				<div class="col-md-12 col-12 product-hover">
 					<div class="product-item-01">
 						<div class="product-hover-item">
-							<p>-15%</p>
-							<a href="">
-								<img src="{{asset('Frontend/images/wishlist.png')}}" class="img-fluid">
-							</a>
+							
+							
 							<a class="show-product-popup" id="profile_view_1">
 								<i class="fas fa-eye"></i>
 							</a>
 						</div>
 
 						<!-- main thumbnail -->
-						<img src="{{asset('Frontend/images/12-1-170x185.jpg')}}" class="img-fluid">
+						<a href="{{route('productDetails',$product->slug)}}"><img src="{{asset('images/product/'.$product->images[0]->image)}}" class="img-fluid"></a>
+						
 						<!-- main thumbnail -->
 
 						<!-- go product details -->
 						<a href="">
-							<p>Organic Broccoli</p>
-							<span>280.99 Tk</span>
+							<p>{{$product->name}}</p>
+							@if($product->offer_price==NULL)
+							<span>{{$product->regular_price}} </span>
+							@else
+							<span>{{$product->offer_price}} </span>
+							<span> <del> {{$product->regular_price}} </del></span>
+							@endif
 						</a>
 						<!-- go product details -->
 						
@@ -256,128 +265,10 @@ your next hair trim belongs?</p>
 						</ul>
 					</div>
 				</div>
+				@endforeach
 				<!-- product item end -->
 
-				<!-- product item start -->
-				<div class="col-md-12 col-12 product-hover">
-					<div class="product-item-01">
-						<div class="product-hover-item">
-							<p>-15%</p>
-							<a href="">
-								<img src="{{asset('Frontend/images/wishlist.png')}}" class="img-fluid">
-							</a>
-							<a class="show-product-popup" id="profile_view_1">
-								<i class="fas fa-eye"></i>
-							</a>
-						</div>
-
-						<!-- main thumbnail -->
-						<img src="{{asset('Frontend/images/12-1-170x185.jpg')}}" class="img-fluid">
-						<!-- main thumbnail -->
-
-						<!-- go product details -->
-						<a href="">
-							<p>Organic Broccoli</p>
-							<span>280.99 Tk</span>
-						</a>
-						<!-- go product details -->
-						
-						<div class="product-item-cart">
-							<a href="">
-								<img src="{{asset('Frontend/images/cart-bag.png')}}"> add to bag
-							</a>
-						</div>
-						<ul>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-						</ul>
-					</div>
-				</div>
-				<!-- product item end -->
-
-				<!-- product item start -->
-				<div class="col-md-12 col-12 product-hover">
-					<div class="product-item-01">
-						<div class="product-hover-item">
-							<p>-15%</p>
-							<a href="">
-								<img src="{{asset('Frontend/images/wishlist.png')}}" class="img-fluid">
-							</a>
-							<a class="show-product-popup" id="profile_view_1">
-								<i class="fas fa-eye"></i>
-							</a>
-						</div>
-
-						<!-- main thumbnail -->
-						<img src="{{asset('Frontend/images/12-1-170x185.jpg')}}" class="img-fluid">
-						<!-- main thumbnail -->
-
-						<!-- go product details -->
-						<a href="">
-							<p>Organic Broccoli</p>
-							<span>280.99 Tk</span>
-						</a>
-						<!-- go product details -->
-						
-						<div class="product-item-cart">
-							<a href="">
-								<img src="{{asset('Frontend/images/cart-bag.png')}}"> add to bag
-							</a>
-						</div>
-						<ul>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-						</ul>
-					</div>
-				</div>
-				<!-- product item end -->
-
-				<!-- product item start -->
-				<div class="col-md-12 col-12 product-hover">
-					<div class="product-item-01">
-						<div class="product-hover-item">
-							<p>-15%</p>
-							<a href="">
-								<img src="{{asset('Frontend/images/wishlist.png')}}" class="img-fluid">
-							</a>
-							<a class="show-product-popup" id="profile_view_1">
-								<i class="fas fa-eye"></i>
-							</a>
-						</div>
-
-						<!-- main thumbnail -->
-						<img src="{{asset('Frontend/images/12-1-170x185.jpg')}}" class="img-fluid">
-						<!-- main thumbnail -->
-
-						<!-- go product details -->
-						<a href="">
-							<p>Organic Broccoli</p>
-							<span>280.99 Tk</span>
-						</a>
-						<!-- go product details -->
-						
-						<div class="product-item-cart">
-							<a href="">
-								<img src="{{asset('Frontend/images/cart-bag.png')}}"> add to bag
-							</a>
-						</div>
-						<ul>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-						</ul>
-					</div>
-				</div>
-				<!-- product item end -->
-
+				
     		</div>
 			<!-- slider end -->
 			

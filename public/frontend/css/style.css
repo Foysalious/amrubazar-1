@@ -711,6 +711,9 @@ a:hover{
 	display: block;
 	margin-bottom: 10px;
 }
+.product-item-01 span del{
+	color: #989898;
+}
 .product-item-01 .fa-star{
 	font-size: 9px;
 	color: #fac916;
@@ -1603,8 +1606,11 @@ html .ui-button.ui-state-disabled:active:hover{
 .available{
 	border-bottom: 1px solid #e5e5e5;
 }
-.quick-view-heading{
+.quick-view-heading span{
 	color: #d92173;
+}
+.quick-view-heading span del{
+	color: #989898;
 }
 /* shop page css end */
 

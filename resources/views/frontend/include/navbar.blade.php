@@ -5,94 +5,19 @@
 			<div class="nav-carousel owl-carousel owl-theme">
 				
 				<!-- navbar item start -->
+				@foreach(App\Models\Backend\Category::orderBy('id','asc')->where('parent_id',0)->where('is_delete',0)->get() as $category) 
 				<div class="item">
 					<a href="">
 						<div class="col-md-12">
-							<img src="{{ asset('frontend/images/fruits.png') }}" class="img-fluid">
+							<img src="{{ asset('images/category/'.$category->icon_image) }}" class="img-fluid">
 						</div>
 					</a>
-					<p>food item</p>
+					<p>{{$category->name}}</p>
 				</div>
 				<!-- navbar item end -->
+				@endforeach
 
-				<!-- navbar item start -->
-				<div class="item">
-					<a href="">
-						<div class="col-md-12">
-							<img src="{{ asset('frontend/images/meat.png') }}" class="img-fluid">
-						</div>
-					</a>
-				</div>
-				<!-- navbar item end -->
-
-				<!-- navbar item start -->
-				<div class="item">
-					<a href="">
-						<div class="col-md-12">
-							<img src="{{ asset('frontend/images/milk.png') }}" class="img-fluid">
-						</div>
-					</a>
-				</div>
-				<!-- navbar item end -->
-
-				<!-- navbar item start -->
-				<div class="item">
-					<a href="">
-						<div class="col-md-12">
-							<img src="{{ asset('frontend/images/fruits.png') }}" class="img-fluid">
-						</div>
-					</a>
-				</div>
-				<!-- navbar item end -->
-
-				<!-- navbar item start -->
-				<div class="item">
-					<a href="">
-						<div class="col-md-12">
-							<img src="{{ asset('frontend/images/meat.png') }}" class="img-fluid">
-						</div>
-					</a>
-				</div>
-				<!-- navbar item end -->
-
-				<!-- navbar item start -->
-				<div class="item">
-					<a href="">
-						<div class="col-md-12">
-							<img src="{{ asset('frontend/images/milk.png') }}" class="img-fluid">
-						</div>
-					</a>
-				</div>
-				<!-- navbar item end -->
-
-				<!-- navbar item start -->
-				<div class="item">
-					<a href="">
-						<div class="col-md-12">
-							<img src="{{ asset('frontend/images/fruits.png') }}" class="img-fluid">
-						</div>
-					</a>
-				</div>
-				<!-- navbar item end -->
-
-				<!-- navbar item start -->
-				<div class="item">
-					<a href="">
-						<div class="col-md-12">
-							<img src="{{ asset('frontend/images/meat.png') }}" class="img-fluid">
-						</div>
-					</a>
-				</div>
-				<!-- navbar item end -->
-
-				<!-- navbar item start -->
-				<div class="item">
-					<a href="">
-						<div class="col-md-12">
-							<img src="{{ asset('frontend/images/milk.png') }}" class="img-fluid">
-						</div>
-					</a>
-				</div>
+				
 				<!-- navbar item end -->
 
 			</div>

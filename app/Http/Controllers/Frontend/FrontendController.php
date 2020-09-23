@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Backend\Product;
 
 class FrontendController extends Controller
 {
@@ -34,8 +35,9 @@ class FrontendController extends Controller
     }
 
      //Product-details show
-     public function productDetails(){
-        return view('frontend.pages.product-details');
+     public function productDetails(Product $product){
+         $relatedProducts = Product::orderBy('id','desc')->where('status',1)->where('cat_id', $product->cat_id)->where('id','!=',$product->id)->get();
+        return view('frontend.pages.product-details',compact('product','relatedProducts'));
     }
 
      //profile show
