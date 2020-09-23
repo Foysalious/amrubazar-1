@@ -114,6 +114,10 @@ a:hover{
 .mystyle{
 	border: 1px solid red;
 }
+.owl-carousel .owl-item img{
+	width: unset!important;
+	display: inline!important;
+}
 /* Global css end */
 
 
@@ -331,7 +335,14 @@ a:hover{
 	background: #d82173!important;
 }
 .nav-carousel .item img{
-	padding-top: 10px;
+	display: block!important;
+    margin: 0 auto;
+}
+.nav-cat-item{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 .nav-carousel .owl-prev{
 	position: absolute;
@@ -549,6 +560,7 @@ a:hover{
 .banner{
 	background: #d82173;
 	height: 65vh;
+	margin-top: 15px;
 }
 .banner .container{
 	position: relative;
@@ -590,6 +602,26 @@ a:hover{
 
 
 
+
+
+
+
+
+
+
+
+
+.sub-cat-item{
+	padding: 15px;
+	background: #f9f9f9;
+}
+.sub-cat-item img{
+	display: block;
+	margin: 0 auto;
+}
+.sub-cat-item p{
+	margin-top: 15px;
+}
 
 
 
@@ -1506,10 +1538,7 @@ html .ui-button.ui-state-disabled:active:hover{
     text-align: center;
     padding: 4px;
 }
-.owl-carousel .owl-item img{
-	width: unset!important;
-	display: inline!important;
-}
+
 .latest-product-title{
 	margin: 15px 0;
 }

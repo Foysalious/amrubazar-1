@@ -221,50 +221,50 @@ your next hair trim belongs?</p>
 
 				<!-- product item start -->
 				@foreach ($relatedProducts as $product)
-				
-					
-				
-				<div class="col-md-12 col-12 product-hover">
-					<div class="product-item-01">
-						<div class="product-hover-item">
+				<div class="item">
+					<div class="col-md-12 col-12 product-hover">
+						<div class="product-item-01">
+							<div class="product-hover-item">
+								
+								
+								<a class="show-product-popup" id="profile_view_1">
+									<i class="fas fa-eye"></i>
+								</a>
+							</div>
+	
+							<!-- main thumbnail -->
+							<a href="{{route('productDetails',$product->slug)}}"><img src="{{asset('images/product/'.$product->images[0]->image)}}" class="img-fluid"></a>
 							
-							
-							<a class="show-product-popup" id="profile_view_1">
-								<i class="fas fa-eye"></i>
-							</a>
-						</div>
-
-						<!-- main thumbnail -->
-						<a href="{{route('productDetails',$product->slug)}}"><img src="{{asset('images/product/'.$product->images[0]->image)}}" class="img-fluid"></a>
-						
-						<!-- main thumbnail -->
-
-						<!-- go product details -->
-						<a href="">
-							<p>{{$product->name}}</p>
-							@if($product->offer_price==NULL)
-							<span>{{$product->regular_price}} </span>
-							@else
-							<span>{{$product->offer_price}} </span>
-							<span> <del> {{$product->regular_price}} </del></span>
-							@endif
-						</a>
-						<!-- go product details -->
-						
-						<div class="product-item-cart">
+							<!-- main thumbnail -->
+	
+							<!-- go product details -->
 							<a href="">
-								<img src="{{asset('Frontend/images/cart-bag.png')}}"> add to bag
+								<p>{{$product->name}}</p>
+								@if($product->offer_price==NULL)
+								<span>{{$product->regular_price}} </span>
+								@else
+								<span>{{$product->offer_price}} </span>
+								<span> <del> {{$product->regular_price}} </del></span>
+								@endif
 							</a>
+							<!-- go product details -->
+							
+							<div class="product-item-cart">
+								<a href="">
+									<img src="{{asset('Frontend/images/cart-bag.png')}}"> add to bag
+								</a>
+							</div>
+							<ul>
+								<li><i class="fas fa-star"></i></li>
+								<li><i class="fas fa-star"></i></li>
+								<li><i class="fas fa-star"></i></li>
+								<li><i class="fas fa-star"></i></li>
+								<li><i class="fas fa-star"></i></li>
+							</ul>
 						</div>
-						<ul>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-						</ul>
 					</div>
 				</div>
+								
 				@endforeach
 				<!-- product item end -->
 
@@ -272,6 +272,7 @@ your next hair trim belongs?</p>
     		</div>
 			<!-- slider end -->
 			
+			@foreach ($relatedProducts as $product)
 			<!-- product quick view popup start -->
 			<div class="product-quick-view profile_view_1">
 				<i class="fas fa-times hide-quick-view"></i>
@@ -381,6 +382,7 @@ your next hair trim belongs?</p>
 				</div>
 			</div>
 			<!-- product quick view popup  end -->
+			@endforeach
 
 		</div>
 		<!-- latest product row end -->

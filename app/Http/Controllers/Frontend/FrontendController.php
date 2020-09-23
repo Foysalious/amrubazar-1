@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Backend\Category;
 use Illuminate\Http\Request;
 use App\Models\Backend\Product;
 
@@ -45,9 +46,15 @@ class FrontendController extends Controller
         return view('frontend.pages.profile');
     }
 
+    public function subcat(Category $category){
+        return view('frontend.pages.subCategory', compact('category'));
+    }
+
        //shop show
-       public function shop(){
-        return view('frontend.pages.shop');
+       public function shop(Category $subcat){
+           $products = Product::orderBy('id','desc')->where('status',1)->where('cat_id', $subcat->id)->paginate(20);
+           $rproducts = Product::orderBy('id','desc')->where('status',1)->where('cat_id', $subcat->id)->get();
+            return view('frontend.pages.shop', compact('subcat','products','rproducts'));
     }
 
      //signup show

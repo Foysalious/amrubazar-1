@@ -112,5 +112,6 @@ Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
 Route::get('/login',[FrontendController::class,'login'])->name('login');
 Route::get('/productDetails/{product:slug}',[FrontendController::class,'productDetails'])->name('productDetails');
 Route::get('/profile',[FrontendController::class,'profile'])->name('profile');
-Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
+Route::get('/subcategory/{category:slug}',[FrontendController::class,'subcat'])->name('subcat');
+Route::get('/shop/{subcat:slug}',[FrontendController::class,'shop'])->name('shop');
 Route::get('/signup',[FrontendController::class,'signup'])->name('signup');
